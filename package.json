@@ -1,0 +1,46 @@
+{
+  "name": "todo_backend",
+  "version": "1.0.0",
+  "description": "Shema Todo  Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha  --timeout 10000000 ./src/test/**.test.js --require @babel/register --exit",
+    "start": "babel-node src",
+    "dev": "npx nodemon --exec babel-node src",
+    "cover": "nyc --reporter=html --reporter=text npm test",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShemaM/Todo_Backend.git"
+  },
+  "author": "shema christian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShemaM/Todo_Backend/issues"
+  },
+  "homepage": "https://github.com/ShemaM/Todo_Backend#readme",
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "swagger-jsdoc": "^6.0.0",
+    "swagger-ui-express": "^4.1.6"
+  }
+}
