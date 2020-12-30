@@ -1,7 +1,7 @@
-import { Router } from "express";
-import { errorRes } from "../utils/errorHandler";
-import welcome from "../controllers/welcome";
-import docRouter from "../documentation/docs";
+import { Router } from 'express';
+import errorRes from '../utils/errorHandler';
+import welcome from '../controllers/welcome';
+import docRouter from '../documentation/docs';
 
 const router = Router();
 
@@ -35,8 +35,8 @@ const router = Router();
  *             description: Route Not Found.
  * */
 
-router.get("/", welcome.get);
-router.use("/documentation", docRouter);
-router.use("*", (req, res, next) => errorRes(res, 400, `Route not Found`));
+router.get('/', welcome.get);
+router.use('/documentation', docRouter);
+router.use('*', (req, res) => errorRes(res, 400, 'Route not Found'));
 
 export default router;
