@@ -1,10 +1,10 @@
-import { errorRes } from "../utils/errorHandler";
-import { successRes } from "../utils/successHandler";
+import errorRes from '../utils/errorHandler';
+import successRes from '../utils/successHandler';
 
 class Welcome {
-  static async get(req, res, next) {
+  static async get(req, res) {
     try {
-      return successRes(res, 200, "Welcome To Shema Todoapp");
+      return successRes(res, 200, 'Welcome To Shema Todoapp');
     } catch (error) {
       return errorRes(
         res,
