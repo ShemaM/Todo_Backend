@@ -8,7 +8,7 @@
     "start": "babel-node src",
     "dev": "npx nodemon --exec babel-node src",
     "cover": "nyc --reporter=html --reporter=text npm test",
-    "coverage": "nyc npm run test && nyc report --reporter=text-lcov --reporter=lcov",
+    "coverage": "nyc npm run test && nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix"
   },
@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/ShemaM/Todo_Backend#readme",
   "devDependencies": {
-    "coveralls": "^3.1.0",
     "eslint": "^7.16.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
@@ -39,6 +38,7 @@
     "@babel/register": "^7.12.10",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "coveralls": "^3.1.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mocha": "^8.2.1",
