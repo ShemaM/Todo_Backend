@@ -8,7 +8,7 @@
     "start": "babel-node src",
     "dev": "npx nodemon --exec babel-node src",
     "cover": "nyc --reporter=html --reporter=text npm test",
-    "coverage": "nyc npm run test && nyc report --reporter=text-lcov --reporter=lcov | node ./node_modules/coveralls/bin/coveralls.js --verbose",
+    "coverage": "nyc npm run test && nyc report --reporter=text-lcov --reporter=lcov",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix"
   },
