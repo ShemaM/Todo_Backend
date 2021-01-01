@@ -8,7 +8,7 @@
     "start": "babel-node src",
     "dev": "npx nodemon --exec babel-node src",
     "cover": "nyc --reporter=html --reporter=text npm test",
-    "coverage": "nyc npm run test && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc npm run test &&  shx cat ./coverage/lcov.info ",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix"
   },
@@ -47,6 +47,7 @@
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
+    "shx": "^0.3.3",
     "swagger-jsdoc": "^6.0.0",
     "swagger-ui-express": "^4.1.6"
   }
