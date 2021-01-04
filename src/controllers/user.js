@@ -26,6 +26,27 @@ class Users {
       return errorRes(res, 400, `user not created ${error.message}`);
     }
   }
+
+  static async login(req, res) {
+    try {
+      const { email, password } = req.body;
+      const foundUser = await User.findOne({ where: { email } });
+      if (!foundUser) return errorRes(res, 404, 'User  Not found ');
+      const isMatch = await bcrypt.compare(password, foundUser.password);
+      if (!isMatch) return errorRes(res, 404, 'Invalid password');
+
+      const token = jwt.sign(
+        { id: foundUser.id, email: foundUser.email },
+        process.env.ACCESS_TOKEN_SECRET
+      );
+      return successRes(res, 200, 'Successfully logged a user', {
+        token,
+        foundUser,
+      });
+    } catch (error) {
+      return errorRes(res, 400, `Not successfully logged in ${error.message}`);
+    }
+  }
 }
 
 export default Users;
