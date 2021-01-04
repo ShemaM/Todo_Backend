@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha  --timeout 10000000 ./src/test/**.test.js --require @babel/register --exit",
-    "start": "babel-node src",
+    "build": "babel ./src --out-dir build",
+    "seed": "npm run migrate:undo && npm run migrate && npx sequelize db:seed:undo:all && npx sequelize db:seed:all",
+    "start": "npm run seed && npm run build && node build",
     "dev": "npx nodemon --exec babel-node src",
     "cover": "nyc --reporter=html --reporter=text npm test",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "migrate":"sequelize-cli db:migrate",
-    "migrate:undo":"sequelize-cli db:migrate:undo"
+    "migrate": "sequelize-cli db:migrate",
+    "migrate:undo": "sequelize-cli db:migrate:undo"
   },
   "repository": {
     "type": "git",
@@ -27,10 +29,10 @@
     "eslint": "^7.16.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
-    "nodemon": "^2.0.6",
-    "sequelize-cli": "^6.2.0"
+    "nodemon": "^2.0.6"
   },
   "dependencies": {
+    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
     "@babel/polyfill": "^7.12.1",
@@ -48,6 +50,7 @@
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0",
     "swagger-jsdoc": "^6.0.0",
     "swagger-ui-express": "^4.1.6"
   }
