@@ -2,6 +2,7 @@ import { Router } from 'express';
 import errorRes from '../utils/errorHandler';
 import welcome from '../controllers/welcome';
 import docRouter from '../documentation/docs';
+import userRoutes from './user';
 
 const router = Router();
 
@@ -37,6 +38,6 @@ const router = Router();
 
 router.get('/', welcome.get);
 router.use('/documentation', docRouter);
+router.use('/', userRoutes);
 router.use('*', (req, res) => errorRes(res, 400, 'Route not Found'));
-
 export default router;

@@ -7,6 +7,7 @@ module.exports = {
   development: {
     url: DEV_DATABASE_URL,
     dialect: 'postgres',
+    database: 'DEV_DATABASE_URL',
     logging: false,
   },
   test: {
