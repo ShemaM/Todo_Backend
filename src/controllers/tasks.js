@@ -46,6 +46,19 @@ class Tasks {
       return errorRes(res, 404, `no task with Id ${req.params.id} found`);
     }
   }
+
+  static async delete(req, res) {
+    try {
+      const Task = await task.destroy({ where: { id: req.params.id } });
+      return successRes(res, 200, 'Deleted successfully a task', Task);
+    } catch (error) {
+      return errorRes(
+        res,
+        404,
+        `no task with Id ${req.params.id} found to be deleted`
+      );
+    }
+  }
 }
 
 export default Tasks;
