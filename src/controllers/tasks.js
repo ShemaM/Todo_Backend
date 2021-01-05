@@ -29,8 +29,21 @@ class Tasks {
       const Task = await task.findOne({ where: { id: req.params.id } });
       return successRes(res, 200, 'successfully retrieved', Task);
     } catch (error) {
-      console.log(error);
       return errorRes(res, 404, 'task not found');
+    }
+  }
+
+  static async update(req, res) {
+    try {
+      const Task = await task.update(req.body, {
+        where: { id: req.params.id },
+      });
+
+      const updatedTask = await task.findOne({ where: { id: req.params.id } });
+
+      return successRes(res, 201, 'successfully updated task', updatedTask);
+    } catch (error) {
+      return errorRes(res, 404, `no task with Id ${req.params.id} found`);
     }
   }
 }
