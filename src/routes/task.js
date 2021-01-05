@@ -4,6 +4,6 @@ import Task from '../controllers/tasks';
 const router = Router();
 
 router.route('/tasks').post(Task.create);
-// router.route('/tasks/:id').get(Task.get);
+router.route('/tasks/:id').get(Task.find);
 
 export default router;

@@ -23,6 +23,16 @@ class Tasks {
       );
     }
   }
+
+  static async find(req, res) {
+    try {
+      const Task = await task.findOne({ where: { id: req.params.id } });
+      return successRes(res, 200, 'successfully retrieved', Task);
+    } catch (error) {
+      console.log(error);
+      return errorRes(res, 404, 'task not found');
+    }
+  }
 }
 
 export default Tasks;
